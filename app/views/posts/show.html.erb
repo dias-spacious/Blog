@@ -1,16 +1,25 @@
 <p style="color: green"><%= notice %></p>
+<%= content_for(:title, @post.title) %>
 
-<h1>
+<div class="page-header">
+<h1 align='center'>
   <%= @post.title %>
 </h1>
-
-<h3>
-  <%= @post.body %>
-<h3>
-
-<div>
-  <% if user_signed_in? %>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <% end %>
-  <%= link_to "Back to posts", posts_path %>
 </div>
+<hr>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 align='center'>
+  <%= @post.body %>
+</h3>
+</div>
+</div>
+
+<% if user_signed_in? %>
+<div class="btn-group pull-right">
+   	<div class="btn-group">
+   		<%= link_to 'Edit this post', edit_post_path(@post), class: "btn btn-default" %>
+   		<%= link_to 'Destroy this post', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+   	</div>
+  </div>
+<% end %>
