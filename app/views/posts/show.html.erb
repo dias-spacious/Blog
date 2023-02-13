@@ -1,10 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @post %>
+<h1>
+  <%= @post.title %>
+</h1>
+
+<h3>
+  <%= @post.body %>
+<h3>
 
 <div>
+  <% if user_signed_in? %>
   <%= link_to "Edit this post", edit_post_path(@post) %> |
+  <% end %>
   <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
 </div>
